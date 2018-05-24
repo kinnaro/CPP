@@ -3,7 +3,7 @@ Given a binary tree, find its maximum depth.
 The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
 */
 
-//我的思路8ms,872k
+//鎴戠殑鎬濊矾8ms,872k
 /**
  * Definition for binary tree
  * struct TreeNode {
@@ -32,7 +32,7 @@ public:
     }
 };
 
-//路人思路<1ms,8816k
+//璺汉鎬濊矾<1ms,8816k
 
 class Solution {
 public:
