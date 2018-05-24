@@ -43,5 +43,3 @@ public:
         return max(left,right)+1;
     }
 };
-
-
