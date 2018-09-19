@@ -1,0 +1,36 @@
+//不使用其余变量，实现：两数交换
+
+
+方法一：
+#include <iostream>
+using namespace std;
+
+int main() {
+	int a;
+	int b;
+	cin >> a >> b;
+	a = a + b;
+	b = a - b;
+	a = a - b;
+	cout << a <<" "<< b;
+	system("pause");
+	return 0;
+}
+
+//因为 + 运算不如 ^ 运行速度快，所以法二最佳；
+
+方法二：
+#include <iostream>
+using namespace std;
+
+int main() {
+	int a;
+	int b;
+	cin >> a >> b;
+	a = a ^ b;
+	b = a ^ b;
+	a = a ^ b;
+	cout << a <<" "<< b;
+	system("pause");
+	return 0;
+}
