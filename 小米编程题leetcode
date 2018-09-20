@@ -1,0 +1,68 @@
+/*split array largest sum
+通过率：100
+*/
+
+#include <stdio.h>
+#include <vector>
+#include <algorithm>
+#include <iostream>
+using namespace std;
+
+class Solution {
+private:
+	bool valid(vector<long>& sums, long sum, int m) {
+		int count = 0, start = 1, end = (int)sums.size();
+		while (start < end) {
+			int left = start, right = end, mid = 0;
+			while (left < right) {
+				mid = left + (right - left) / 2;
+				if (sums[mid] - sums[start - 1] <= sum)
+					left = mid + 1;
+				else
+					right = mid;
+			}
+			if (++count > m)
+				return false;
+			start = left;
+		}
+		return true;
+	};
+
+public:
+	int splitArray(vector<int>& nums, int m) {
+		int n = (int)nums.size();
+		long left = 0, right = 0, mid = 0;
+		vector<long> sums(n + 1, 0);
+		for (int i = 0; i < n; ++i) {
+			left = max(left, (long)nums[i]);
+			right += nums[i];
+			sums[i + 1] = right;
+		}
+		if (m == 1) return right;
+		if (m == n) return left;
+
+		while (left < right) {
+			mid = left + (right - left) / 2;
+			if (!valid(sums, mid, m))
+				left = mid + 1;
+			else
+				right = mid;
+		}
+		return left;
+	}
+};
+
+int main() {
+	int n, m, x, res;
+	cin >> n >> m;
+	vector<int> nums;
+	for (int i = 0; i < n; i++) {
+		cin >> x;
+		nums.push_back(x);
+	}
+	Solution s;
+	res = s.splitArray(nums, m);
+	cout << res;
+	system("pause");
+	return 0;
+}
