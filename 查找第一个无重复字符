@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int firstUniqChar(string s) {
+        unordered_map<char, int> ump;
+        int len = s.size();
+        for(auto &c : s)
+            ump[c]++;
+        for(int i=0;i<len;i++)
+            if(ump[s[i]] == 1)
+                return i;
+        return -1;  //起初忘了做判断
+    }
+};
