@@ -1,0 +1,17 @@
+/**
+ * LeetCode中等题：
+ * 此题，比较当前位置能达到的最大值j+nums[j],和之前所能达到的最大值i中挑选出最大的赋值给i，并使用i和len-1作比较
+ * 注：当前位置j如果大于i时，将无法跳跃到下一阶
+ */
+class Solution {
+    public boolean canJump(int[] nums) {
+        int i = 0;
+        int len = nums.length;
+        for(int j=0;j<=i;j++){
+            i = Math.max(i,j+nums[j]);
+            if(i>=len-1)
+                return true;
+        }
+        return false;
+    }
+}
