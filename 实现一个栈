@@ -1,0 +1,64 @@
+import java.util.ArrayList;
+
+class MyStack<T> {
+    private ArrayList<T> arr;
+    private int stackSize;
+
+    //初始化
+    public MyStack() {
+        arr = new ArrayList<T>();
+        stackSize = 0;
+    }
+
+    //判断是否为空
+    boolean isEmpty() {
+        return stackSize == 0;
+    }
+
+    //返回栈的大小
+    int size() {
+        return stackSize;
+    }
+
+    //返回栈顶元素
+    T top() {
+        if (isEmpty())
+            return null;
+        else
+            return arr.get(stackSize - 1);
+    }
+
+    //弹栈
+    T pop() {
+        if (stackSize > 0) {
+            return arr.get(--stackSize);
+        } else {
+            System.out.println("栈已为空！");
+            return null;
+        }
+    }
+
+    //压栈
+    void push(T item) {
+        arr.add(item);
+        stackSize++;
+    }
+}
+
+public class StackSolution {
+    public static void main(String[] args) {
+        MyStack<Integer> stack = new MyStack<Integer>();
+        stack.push(9);
+        stack.push(6);
+        stack.push(3);
+        stack.push(1);
+        System.out.println("栈是否为空：" + stack.isEmpty());
+        System.out.println("栈的大小为：" + stack.size());
+        System.out.println(stack);
+        stack.top();
+        System.out.println(stack);
+        System.out.println("栈的大小为：" + stack.size());
+        stack.pop();
+        System.out.println("栈的大小为：" + stack.size());
+    }
+}
